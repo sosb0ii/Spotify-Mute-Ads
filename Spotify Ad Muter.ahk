@@ -1,4 +1,3 @@
-#Persistent
 Loop
 {
 	if (WinExist("ahk_exe Spotify.exe")) ;only runs when spotify is open
