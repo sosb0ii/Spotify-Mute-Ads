@@ -5,12 +5,12 @@ This program will mute unskippable ads (or commercials) on Spotify. It is intend
 
 ### Installation Guide
 
-This script uses AutoHotkey v1.1, and as such requires the AutoHotkey software, which can be installed from their website. The most updated release can be downloaded [here](https://www.autohotkey.com/download/ahk-install.exe). A version for AutoHotkey v2 may or may not be added as a separate branch in the future. It works only on the Spotify desktop app (which can be installed[here](https://www.spotify.com/de-en/download/other/)), *not* on the website. When these are installed, the `Spotify Ad Muter.ahk` file above can be run from any directory while Spotify is open to mute the Ads.
+This script uses AutoHotkey v1.1, and as such requires the AutoHotkey software, which can be installed from their website. The most updated release can be downloaded directly by clicking [here](https://www.autohotkey.com/download/ahk-install.exe). A version for AutoHotkey v2 may or may not be added as a separate branch in the future. It works only on the Spotify desktop app (which can be installed [here](https://www.spotify.com/de-en/download/other/)), *not* on the website. When these are installed, the `Spotify Ad Muter.ahk` file above can be run from any directory while Spotify is open to mute the Ads.
 
 ### Functionality
 
-This script will first check to see if Spotify is running or not. If not, it will wait one minute before checking again. If Spotify is running, it will retrieve the title of the Spotify window. If the current title is different from the last title (initially set to a blank string, and subsequently reset for new songs) and also not the "Spotify Free" title which occurs when it is paused, then a new audio is playing.  
-When a new audio begins playing, the script checks if the " - " string (present in the "Artist - Song" format when a song is playing) or the "|" character (present in many podcast titles) is in the name of the window. If neither is present, an advertisement is playing, and the system sound is muted. If one or both strings are present, then a song or podcase is playing, and the sound is unmuted.  
+This script will first check to see if Spotify is running or not. If not, it will wait one minute before checking again. If Spotify is running, it will retrieve the title of the Spotify window. If the current title is different from the last title (initially set to a blank string, and subsequently reset for new songs) and also not the `Spotify Free` title which occurs when it is paused, then a new audio is playing.  
+When a new audio begins playing, the script checks if the ` - ` string (present in the `Artist - Song` format when a song is playing) or the `|` character (present in many podcast titles) is in the name of the window. If neither is present, an advertisement is playing, and the system sound is muted. If one or both strings are present, then a song or podcase is playing, and the sound is unmuted.  
 In this way, the script will always and only perform an action when a new audio starts. 
 
 
@@ -23,7 +23,7 @@ If you have no concern for minimizing processing power and want to ensure absolu
 ### Issues and Potential Fixes
 
 > [!NOTE]
-> The below information is out of date. It will be updated soon
+> The below information is out of date. It will be updated soon.
 
 - Podcasts do not have the " - " syntax present in the window title, and will be muted.
 	- While the " - " isn't going to work most of the time, you might find another string, such as "|" that your podcasts use, and add it to line 6 like so:  
