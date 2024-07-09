@@ -1,27 +1,29 @@
 
 # Spotify Ad Muter (Desktop)
 
-For those who use Spotify Free on Desktop, it may be desired to mute the unskippable ads whenever they come up until they have passed. This repository contains a file that will do exactly that with AutoHotkey.
+This program will mute unskippable ads (or commercials) on Spotify. It is intended for the peace of mind of Spotify Free users who can use the Desktop app.
 
-### Requirements and Application
+### Installation Guide
 
-This script uses AutoHotkey v1.1, and as such requires the AutoHotkey software. A version for AutoHotkey v2 may or may not be added as a separate branch in the future. It works only on the Spotify desktop app, *not* on the website.
-
-## Installation Guide
-
-For those who do not already have AHK v1.1 and the Spotify desktop app, they should be installed first. Then, the .ahk file above can be downloaded and run from any directory on the computer.
+This script uses AutoHotkey v1.1, and as such requires the AutoHotkey software, which can be installed from their website. The most updated release can be downloaded [here](https://www.autohotkey.com/download/ahk-install.exe). A version for AutoHotkey v2 may or may not be added as a separate branch in the future. It works only on the Spotify desktop app (which can be installed[here](https://www.spotify.com/de-en/download/other/)), *not* on the website. When these are installed, the `Spotify Ad Muter.ahk` file above can be run from any directory while Spotify is open to mute the Ads.
 
 ### Functionality
 
-This script will first check to see if Spotify is running or not. If not, it will wait one minute before checking again. If Spotify is running, it will retrieve the title of the Spotify window. This title will follow the "Artist - Song" format when a song is playing, or "Spotify Free" when nothing is playing. When an advertisement is playing, the title will often be "Advertisement" or "Spotify", but occasionally contains a different message from the advertiser.  
-For this reason, the method of checking whether or not an advertisement is playing is by looking for the string " - " in the title and checking if the title is "Spotify Free" (content is paused). If both conditions are false, it assumes that an advertisement is playing, and mutes the system sound. It will continue to check the title of the window and mute the system sound until a song begins playing (" - " occurs in the window title) or the content is paused (title is "Spotify Free"). When either of those conditions become true, the script unmutes the sound and waits 2 seconds to check the title again.
+This script will first check to see if Spotify is running or not. If not, it will wait one minute before checking again. If Spotify is running, it will retrieve the title of the Spotify window. If the current title is different from the last title (initially set to a blank string, and subsequently reset for new songs) and also not the "Spotify Free" title which occurs when it is paused, then a new audio is playing.  
+When a new audio begins playing, the script checks if the " - " string (present in the "Artist - Song" format when a song is playing) or the "|" character (present in many podcast titles) is in the name of the window. If neither is present, an advertisement is playing, and the system sound is muted. If one or both strings are present, then a song or podcase is playing, and the sound is unmuted.  
+In this way, the script will always and only perform an action when a new audio starts. 
+
 
 ### Optimization
 
-In order to minimize processing power, a 60 second delay will continually check if the Spotify app has been opened when it is not already open. This way, the script can be running when Spotify is not, without continuously looping and checking things. As long as you don't get an ad within 60 seconds of opening the app, it will work fine.  
-If you wish to further minimize processing power (for whatever reason) you can uncomment the delay in line 12 (remove the semicolon). This will add a delay to checking for ads, so you might hear the first second or two of the advertisement.
+In order to minimize processing power, a 30 second delay will continually check if the Spotify app has been opened when it is not already open. This way, the script can be running when Spotify is not, without continuously looping and checking things. As long as you don't get an ad within 30 seconds of opening the app, it will work fine.  
+If you wish to further minimize processing power (for whatever reason) you can extend this delay (in line 15) by altering the time (in milliseconds) of the delay. Of course you can also add a delay anywhere you want, but you might compromise the effectiveness of the script.  
+If you have no concern for minimizing processing power and want to ensure absolute effectiveness of the script, you can comment out (put a semicolon in front of) line 15 or remove it entirely.
 
 ### Issues and Potential Fixes
+
+> [!NOTE]
+> The below information is out of date. It will be updated soon
 
 - Podcasts do not have the " - " syntax present in the window title, and will be muted.
 	- While the " - " isn't going to work most of the time, you might find another string, such as "|" that your podcasts use, and add it to line 6 like so:  
