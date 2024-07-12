@@ -10,7 +10,7 @@ This script uses AutoHotkey v1.1, and as such requires the AutoHotkey software, 
 ## Functionality
 
 This script will first check to see if Spotify is running or not. If not, it will wait one minute before checking again. If Spotify is running, it will retrieve the title of the Spotify window. If the current title is different from the last title (initially set to a blank string, and subsequently reset for new songs) and also not the `Spotify Free` title which occurs when it is paused, then a new audio is playing.  
-When a new audio begins playing, the script checks if the ` - ` string (present in the `Artist - Song` format when a song is playing) or the `|` character (present in many podcast titles) is in the name of the window. If neither is present, an advertisement is playing, and the system sound is muted. If one or both strings are present, then a song or podcase is playing, and the sound is unmuted.  
+When a new audio begins playing, the script checks if the` - `string (present in the `Artist - Song` format when a song is playing) or the `|` character (present in many podcast titles) is in the name of the window. If neither is present, an advertisement is playing, and the system sound is muted. If one or both strings are present, then a song or podcase is playing, and the sound is unmuted.  
 In this way, the script will always and only perform an action when a new audio starts. 
 
 
